@@ -1,0 +1,51 @@
+* {
+    margin: 0
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+/* Css Ejercicio1 */
+#imgBorde{
+    border: 2px solid;
+    cursor: pointer;
+}
+
+/* Css Ejercicio2 */
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.img-container {
+    text-align: center; 
+    margin-right: 20px; 
+}
+
+img {
+    height: 210px;
+    width: 210px;
+}
+
+input {
+    margin-top: 10px; 
+}
+
+.btn-container {
+    margin-top: 20px; 
+    text-align: center; 
+}
+
+.boton {
+    margin-top: 20px; 
+}
+
+p{
+    align-items: center;
+    text-align: center; 
+}
