@@ -1,0 +1,24 @@
+.color-div {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#azul{
+    background-color: blue;
+}
+
+#rojo{
+    background-color: red;
+}
+
+#verde{
+    background-color: green
+}
+
+#amarillo{
+    background-color: yellow;
+}
+
