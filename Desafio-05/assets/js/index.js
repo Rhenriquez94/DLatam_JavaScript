@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     const arrayTask = [];
-   
+    let checkedCheckboxes = [];
+
     function addTask() {
-    const nameTask = document.querySelector('#nombre').value;
+        const nameTask = document.querySelector('#nombre').value;
 
-        if(nameTask.trim()!== ''){
-            arrayTask.push(nameTask);
-            document.querySelector('#nombre').value = ''; 
-
+        if (nameTask.trim() !== '') {
+            arrayTask.push({ task: nameTask, checked: false });
+            document.querySelector('#nombre').value = '';
+        
             updateTable();
-            updateTaskCount()
-
+            updateTaskCount();
+            restoreCheckedCheckboxes(); // Restaurar el estado de los checkboxes marcados
         } else {
             document.getElementById('alerta').style.display = 'block';
             setTimeout(function() {
@@ -19,14 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
     function updateTable() {
         const tableBody = document.querySelector('#tableTask tbody');
         tableBody.innerHTML = '';
         
-        arrayTask.forEach((task,index) => {
+        arrayTask.forEach((task, index) => {
             const row = document.createElement('tr');
-
+    
             //Crear ID
             const idCell = document.createElement('td');
             idCell.textContent = index + 1; 
@@ -34,17 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             //Crear Crear Tarea
             const taskCell = document.createElement('td');
-            taskCell.textContent = task;
+            taskCell.textContent = task.task;
             row.appendChild(taskCell);
-
-
+    
             //Crear Checkbox
             const checkBoxCell = document.createElement('td');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
+            checkbox.checked = task.checked;
             checkBoxCell.appendChild(checkbox); 
             row.appendChild(checkBoxCell);
-
+    
             //Crear icono Eliminar
             const trashCell = document.createElement('i');
             trashCell.classList.add("bi", "bi-x-circle");
@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
             //Actualizar Tabla
             tableBody.appendChild(row);
-
         });
     }
 
@@ -75,23 +74,24 @@ document.addEventListener('DOMContentLoaded', function() {
         let contador = 0;
         
         checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                contador++; 
+            }
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
                     contador++; 
                 } else {
                     contador--; 
                 }
-
                 countCheck.textContent = contador;
             });
         });
-
+    
         countCheck.textContent = contador;
     }
 
-
     function deleteTask(taskIndex) {
-        arrayTask.splice(taskIndex);
+        arrayTask.splice(taskIndex,1);
         updateTable();
         updateTaskCount();
     }
@@ -107,13 +107,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
             
     document.getElementById('nombre').addEventListener('keyup', function(e) {
-        if (e.key === 'Click') {
-        addTask();
+        if (e.key === 'Enter') {
+            addTask();
         }
     });
     
     document.getElementById('btnTask').addEventListener('click', function() {
         addTask();
     });
-});
 
+    // Función para restaurar el estado de los checkboxes marcados
+    function restoreCheckedCheckboxes() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox, index) => {
+            if (checkedCheckboxes.includes(index)) {
+                checkbox.checked = true;
+            }
+        });
+    }
+});
