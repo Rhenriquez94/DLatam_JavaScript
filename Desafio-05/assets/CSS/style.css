@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    margin-right: 10px;
+}
+
+  
+.view_task {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1px; 
+}
+
+.task {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.count {
+    padding: 20px;
+    background-color: #e0e0e0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
