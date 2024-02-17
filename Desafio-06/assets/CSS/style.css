@@ -1,0 +1,37 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+
+    background-color: #23272b;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+}
+
+h1,h2{
+    color: rgb(238, 238, 238);
+}
+
+.caja {
+    background-color: #6c757d;
+}
+
+h3{
+    color:rgb(238, 238, 238) ;
+    text-align: center;
+}
+
+.chart{
+    width: 600px;
+    height: 600px;
+    padding-top: 20px;
+}
+
+canvas{
+    background-color: #fff;
+}
